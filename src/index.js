@@ -6,7 +6,7 @@ import axios from "axios";
 
 let apiUrl;
 if (process.env.NODE_ENV === "production") {
-  apiUrl = "https://.herokuapp.com/api/v1"; //check with backend for correct link
+  apiUrl = "https://smjs-crime-tracker-api.herokuapp.com/";
 } else {
   apiUrl = "http://localhost:3000/api/v1";
 }

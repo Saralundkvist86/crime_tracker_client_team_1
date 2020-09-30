@@ -1,26 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { fetchTeaserListData } from "../modules/reports";
 
-class TeaserList extends Component {
+class ReportList extends Component {
   state = {
-    teaserList = null
-  }
+    data: [],
+  };
 
-  componentDidMount() {
-    this.getTeaserList()
-  }
-  
-  async getTeaserList() {
-    let result = await getData();
-    this.setState({teaserList: result.data.teasers})
-  } 
+  componentDidMount = async () => {
+    const data = await fetchTeaserListData();
+    this.setState({ data: data });
+  };
 
   render() {
-    return (
-      <div>
-        
-      </div>
+    let teaserList;
+    if (this.state.data !== []) {
+      teaserList = this.state.data.map((data) => {
+        return (
+          <div data-id={data.id} data-cy={"data-" + data.id} key={data.id}>
+            <h3 data-cy="teaser">{data.description}</h3>
+          </div>
+        );
+      });
+    }
+
+    return ( 
+    <div>
+      <h1>Crime Reports</h1>
+      {teaserList}
+    </div>
     )
   }
 }
 
-export default TeaserList
+export default ReportList
