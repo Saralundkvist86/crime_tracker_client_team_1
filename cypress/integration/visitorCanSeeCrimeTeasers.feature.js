@@ -4,7 +4,8 @@ describe("Visitor can see crime teasers", () => {
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v1/data",
-      response: "fixture:data.json"});
+      response: "fixture:data.json",
+    });
     cy.visit("/");
   });
 
@@ -14,7 +15,10 @@ describe("Visitor can see crime teasers", () => {
 
   it("shows first teaser", () => {
     cy.get('[data-cy="data-174460"]').within(() => {
-    cy.get('[data-cy="teaser"]').should('contain', 'Pressmeddelande angående eventuellt mord i Äppelbo')
+      cy.get('[data-cy="teaser"]').should(
+        "contain",
+        "Pressmeddelande angående eventuellt mord i Äppelbo"
+      );
     });
   });
 });
