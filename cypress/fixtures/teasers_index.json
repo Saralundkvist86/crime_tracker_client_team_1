@@ -1,0 +1,14 @@
+{
+  "teasers": [
+    {
+      "id": 1,
+      "name": "Robbery in gothenburg",
+      "description": "A man robbed a student of his wallet."
+    },
+    {
+      "id": 2,
+      "name": "Robbery in Kista",
+      "description": "A woman got her cellphone stolen in the Kista subway station."
+    }
+  ]
+}
