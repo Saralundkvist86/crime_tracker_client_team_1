@@ -1,12 +1,11 @@
-import React from 'react'
-import { Form, Button } from "semantic-ui-react";
+import React from "react";
+import {  Button } from "semantic-ui-react";
 
-
- const LoginForm = () => {
-    return (
-        <Form>
-{/*       <form onSubmit={submitFormHandler} id="login-form">
- */}        <label>Email</label>
+const LoginForm = ({ submitFormHandler }) => {
+  return (
+    
+      <form onSubmit={ submitFormHandler } id="login-form">
+        <label>Email</label>
         <input name="email" type="email" id="email"></input>
 
         <label>Password</label>
@@ -15,10 +14,9 @@ import { Form, Button } from "semantic-ui-react";
         <Button basic color="green" id="submit">
           Submit
         </Button>
-     
-    </Form>
-    )
-}
-
+      </form>
+   
+  );
+};
 
 export default LoginForm;
