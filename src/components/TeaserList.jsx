@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import reports from "../modules/reports";
-
+import React, { useState, useEffect } from "react";
+import { fetchTeaserListData } from "../modules/reports";
+import parse from "html-react-parser";
 const TeaserList = () => {
-  let [crimeData, setCrimeData] = useState([])
+  let [crimeData, setCrimeData] = useState([]);
+  let [isHidden, toggleIsHidden] = useState(false);
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await reports.fetchTeaserList();
-      setCrimeData(data)
-    }
-    fetchData()
-  }, [])
+    const fetchTeasersData = async () => {
+      const data = await fetchTeaserListData();
+      setCrimeData(data);
+    };
+    fetchTeasersData();
+  }, []);
 
   let teaserList = crimeData.map((data) => {
     return (
-      <div data-id={data.id} data-cy={"data-" + data.id} key={data.id}>
-        <h3 data-cy="teaser">{data.description}</h3>
+      <div data-cy={"data-" + data.id} key={data.id}>
+        <button onClick={() => toggleIsHidden(true)}>
+          <h3 data-cy="teaser">{parse(data.description)}</h3>{" "}
+        </button>
+        {isHidden && <p data-cy="content">{parse(data.content)}</p>}
       </div>
     );
   });
@@ -24,7 +29,7 @@ const TeaserList = () => {
       <h1>Crime Reports</h1>
       {teaserList}
     </>
-  )
-}
+  );
+};
 
-export default TeaserList
+export default TeaserList;
