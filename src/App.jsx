@@ -2,6 +2,7 @@ import LoginForm from "./components/LoginForm";
 import TeaserList from "./components/TeaserList";
 import { authenticate } from "./modules/authenticate";
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -25,12 +26,7 @@ class App extends Component {
     }
   };
 
-  onChangeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value, entrySaved: false });
-  };
-
   render() {
-
     const { renderLoginForm, authenticated, message } = this.state;
     let renderLogin;
     switch (true) {
@@ -40,24 +36,25 @@ class App extends Component {
       case !renderLoginForm && !authenticated:
         renderLogin = (
           <>
-            <button
+            <Button
+              color="green"
               id="login"
               onClick={() => this.setState({ renderLoginForm: true })}
             >
               Login
-            </button>
+            </Button>
             <p id="message">{message}</p>
           </>
         );
         break;
-        case authenticated:
-          renderLogin = (
-            <p id="message">
-              You're logged in as:{" "}
-              {JSON.parse(sessionStorage.getItem("credentials")).uid}
-            </p>
-          );
-          break;
+      case authenticated:
+        renderLogin = (
+          <p id="message">
+            You're logged in as:{" "}
+            {JSON.parse(sessionStorage.getItem("credentials")).uid}
+          </p>
+        );
+        break;
       default:
         break;
     }
@@ -65,7 +62,7 @@ class App extends Component {
     return (
       <>
         <h1 data-cy="header">Teaser List</h1>
-
+        <div id="render"> {renderLogin} </div>
         <TeaserList />
       </>
     );

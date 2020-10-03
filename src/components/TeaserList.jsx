@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { fetchTeaserListData } from "../modules/reports";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
 const TeaserList = () => {
   let [crimeData, setCrimeData] = useState([]);
   let [isHidden, toggleIsHidden] = useState(false);
 
-  useEffect(() => { 
+  useEffect(() => {
     const fetchTeasersData = async () => {
       const data = await fetchTeaserListData();
       setCrimeData(data);
-    } 
-    fetchTeasersData()
+    };
+    fetchTeasersData();
   }, []);
 
   let teaserList = crimeData.map((data) => {

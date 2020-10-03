@@ -9,7 +9,7 @@ const authenticate = async (email, password) => {
     await storeAuthCredentials(response);
     return { authenticated: true };
   } catch (error) {
-    return { authenticated: false, message: error.response.data.error[0] };
+    return { authenticated: false, message: error.response.data.errors[0] };
   }
 };
 
