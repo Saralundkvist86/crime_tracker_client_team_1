@@ -1,5 +1,5 @@
 import LoginForm from "./components/LoginForm";
-import TeaserList from "./components/TeaserList";
+import DisplayCrimeData from "./components/DisplayCrimeData";
 import { authenticate } from "./modules/authenticate";
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
@@ -15,6 +15,7 @@ class App extends Component {
 
   onLogin = async (e) => {
     e.preventDefault();
+    debugger
     const response = await authenticate(
       e.target.email.value,
       e.target.password.value
@@ -64,7 +65,7 @@ class App extends Component {
         <h1 data-cy="header"> Log in to read the entire crime report</h1>
         <div id="render"> {renderLogin} </div>
 
-        <TeaserList authenticated={this.state.authenticated} />
+        <DisplayCrimeData authenticated={this.state.authenticated} />
       </>
     );
   }
