@@ -10,7 +10,10 @@ describe("Visitor can see crime teasers", () => {
   });
 
   it("visitor can see teaser title", () => {
-    cy.get('[data-cy="header"]').should("contain", "Teaser List");
+    cy.get('[data-cy="header"]').should(
+      "contain",
+      "Log in to read the entire crime report"
+    );
   });
 
   it("shows first teaser", () => {

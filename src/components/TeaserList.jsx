@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { fetchTeaserListData } from "../modules/reports";
+import { fetchTeaserListData } from "../modules/crimeReports";
 import parse from "html-react-parser";
-const TeaserList = () => {
-  let [crimeData, setCrimeData] = useState([]);
-  let [isHidden, toggleIsHidden] = useState(false);
+import React, { Component } from "react";
 
-  useEffect(() => {
-    const fetchTeasersData = async () => {
-      const data = await fetchTeaserListData();
-      setCrimeData(data);
-    };
-    fetchTeasersData();
-  }, []);
+class TeaserList extends Component {
+  state = {
+    crimeData: [],
+  };
 
-  let teaserList = crimeData.map((data) => {
+  componentDidMount = async () => {
+    const crimeData = await fetchTeaserListData();
+    this.setState({ crimeData: crimeData });
+  };
+
+  render() {
+    const authenticated = this.props.authenticated;
+    let teaserList;
+    teaserList = this.state.crimeData.map((data) => {
+      return (
+        <div data-cy={"data-" + data.id} key={data.id}>
+          <h3 data-cy="teaser">{parse(data.description)}</h3>
+
+          {authenticated && <p data-cy="content">{parse(data.content)}</p>}
+        </div>
+      );
+    });
+
     return (
-      <div data-cy={"data-" + data.id} key={data.id}>
-        <button onClick={() => toggleIsHidden(true)}>
-          <h3 data-cy="teaser">{parse(data.description)}</h3>{" "}
-        </button>
-        {isHidden && <p data-cy="content">{parse(data.content)}</p>}
+      <div>
+        <h1>Crime Reports</h1>
+        {teaserList}
       </div>
     );
-  });
-
-  return (
-    <>
-      <h1>Crime Reports</h1>
-      {teaserList}
-    </>
-  );
-};
+  }
+}
 
 export default TeaserList;
