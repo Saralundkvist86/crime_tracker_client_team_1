@@ -61,9 +61,10 @@ class App extends Component {
 
     return (
       <>
-        <h1 data-cy="header">Teaser List</h1>
+        <h1 data-cy="header"> Log in to read the entire crime report</h1>
         <div id="render"> {renderLogin} </div>
-        <TeaserList />
+
+        <TeaserList authenticated={this.state.authenticated} />
       </>
     );
   }
