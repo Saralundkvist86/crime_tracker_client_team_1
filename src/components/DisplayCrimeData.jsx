@@ -42,13 +42,15 @@ class DisplayCrimeData extends Component {
     }
 
     const authenticated = this.props.authenticated;
-    let teaserList = this.state.crimeData.map((report) => { 
+    let teaserList = this.state.crimeData.map((report) => {
       return (
-      
         <div data-cy={"data-" + report.id} key={report.id}>
-          <h3 data-cy="teaser">{(report.description)}</h3>
-          {authenticated && <p data-cy="content">{(report.content)}</p>} 
-        </div> 
+          <h3 data-cy="teaser">{parse(report.description)}</h3>
+          {
+            (authenticated && <p data-cy="content">{parse(report.content)}</p>,
+            { graph })
+          }
+        </div>
       );
     });
 
@@ -56,7 +58,6 @@ class DisplayCrimeData extends Component {
       <div>
         <h1>Crime Reports</h1>
         {teaserList}
-        {graph}
       </div>
     );
   }
