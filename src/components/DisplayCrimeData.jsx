@@ -14,32 +14,32 @@ class DisplayCrimeData extends Component {
   };
 
   render() {
-    // let graph;
-    // let location = [];
-    // let types = [];
+    let graph;
+    let location = [];
+    let types = [];
 
-    // if (this.state.crimeData !== null) {
-    //   this.state.crimeData.forEach((data) => {
-    //     types.push(data.title_type);
-    //     location.push(data.title_location);
-    //   });
-    //   const crimeGraph = {
-    //     datasets: [
-    //       {
-    //         data: types,
-    //         location: location,
-    //         label: "crime type",
-    //       },
-    //     ],
-    //     location: location,
-    //   };
+    if (this.state.crimeData !== null) {
+      this.state.crimeData.forEach((data) => {
+        types.push(data.title_type);
+        location.push(data.title_location);
+      });
+      const crimeGraph = {
+        datasets: [
+          {
+            data: types,
+            location: location,
+            label: "crime type",
+          },
+        ],
+        location: location,
+      };
 
-    //   graph = (
-    //     <>
-    //       <Bar data={crimeGraph} />
-    //     </>
-    //   );
-    // }
+      graph = (
+        <>
+          <Bar data={crimeGraph} />
+        </>
+      );
+    }
 
     const authenticated = this.props.authenticated;
     let teaserList = this.state.crimeData.map((report) => { 
@@ -56,7 +56,7 @@ class DisplayCrimeData extends Component {
       <div>
         <h1>Crime Reports</h1>
         {teaserList}
-        {/* {graph} */}
+        {graph}
       </div>
     );
   }
