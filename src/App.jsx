@@ -6,6 +6,7 @@ import { Button, Grid, Container, GridColumn } from "semantic-ui-react";
 import CrimeHeader from "./components/CrimeHeader";
 import Footer from "./components/Footer";
 import crime from "./img/crime.jpg";
+
 class App extends Component {
   state = {
     renderLoginForm: false,
@@ -68,7 +69,7 @@ class App extends Component {
           <Grid>
             <Grid.Row columns={2}>
               <GridColumn>
-                <img className="index-img" src={crime} alt="crime image"></img>
+                <img className="index-img" src={crime} alt="crime"></img>
               </GridColumn>
               <GridColumn>
                 <h1 data-cy="header">
