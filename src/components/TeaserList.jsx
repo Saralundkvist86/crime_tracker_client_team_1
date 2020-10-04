@@ -18,16 +18,23 @@ class TeaserList extends Component {
     teaserList = this.state.crimeData.map((data) => {
       return (
         <div data-cy={"data-" + data.id} key={data.id}>
-          <h3 data-cy="teaser">{parse(data.description)}</h3>
+          <h3 data-cy="teaser" id="teaser">
+            {parse(data.description)}
+          </h3>
+          {data.imgage}
 
-          {authenticated && <p data-cy="content">{parse(data.content)}</p>}
+          {authenticated && (
+            <p data-cy="content" id="content">
+              {parse(data.content)}
+            </p>
+          )}
         </div>
       );
     });
 
     return (
       <div>
-        <h1>Crime Reports</h1>
+        <h1>Latest Crime Reports</h1>
         {teaserList}
       </div>
     );

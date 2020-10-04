@@ -2,8 +2,10 @@ import LoginForm from "./components/LoginForm";
 import TeaserList from "./components/TeaserList";
 import { authenticate } from "./modules/authenticate";
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
-
+import { Button, Grid, Container, GridColumn } from "semantic-ui-react";
+import CrimeHeader from "./components/CrimeHeader";
+import Footer from "./components/Footer";
+import crime from "./img/crime.jpg";
 class App extends Component {
   state = {
     renderLoginForm: false,
@@ -61,10 +63,26 @@ class App extends Component {
 
     return (
       <>
-        <h1 data-cy="header"> Log in to read the entire crime report</h1>
-        <div id="render"> {renderLogin} </div>
+        <CrimeHeader />
+        <Container>
+          <Grid>
+            <Grid.Row columns={2}>
+              <GridColumn>
+                <img className="index-img" src={crime} alt="crime image"></img>
+              </GridColumn>
+              <GridColumn>
+                <h1 data-cy="header">
+                  {" "}
+                  Log in to read the entire crime report
+                </h1>
+                <div id="render"> {renderLogin} </div>
+              </GridColumn>
+            </Grid.Row>
 
-        <TeaserList authenticated={this.state.authenticated} />
+            <TeaserList id="list" authenticated={this.state.authenticated} />
+          </Grid>
+        </Container>
+        <Footer />
       </>
     );
   }
