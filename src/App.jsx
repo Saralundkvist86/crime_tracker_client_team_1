@@ -57,7 +57,7 @@ class App extends Component {
         break;
       default:
         break;
-    }
+    }debugger
 
     return (
       <>
