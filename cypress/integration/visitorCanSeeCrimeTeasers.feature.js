@@ -3,7 +3,7 @@ describe("Visitor can see crime teasers", () => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/data",
+      url: "http://localhost:3000/api/v1/reports",
       response: "fixture:data.json",
     });
     cy.visit("/");

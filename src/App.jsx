@@ -1,5 +1,5 @@
 import LoginForm from "./components/LoginForm";
-import TeaserList from "./components/TeaserList";
+import DisplayCrimeData from "./components/DisplayCrimeData";
 import { authenticate } from "./modules/authenticate";
 import React, { Component } from "react";
 import { Button, Grid, Container, GridColumn } from "semantic-ui-react";
@@ -79,7 +79,7 @@ class App extends Component {
               </GridColumn>
             </Grid.Row>
 
-            <TeaserList id="list" authenticated={this.state.authenticated} />
+            <DisplayCrimeData authenticated={this.state.authenticated} />
           </Grid>
         </Container>
         <Footer />

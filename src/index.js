@@ -8,7 +8,7 @@ import "./index.css";
 
 let apiUrl;
 if (process.env.NODE_ENV === "production") {
-  apiUrl = "https://smjs-crime-tracker-api.herokuapp.com/";
+  apiUrl = "https://team1-crimetracker-api.herokuapp.com/api/v1";
 } else {
   apiUrl = "http://localhost:3000/api/v1";
 }

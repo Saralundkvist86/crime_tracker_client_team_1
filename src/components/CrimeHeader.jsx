@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Grid, Header, Segment } from "semantic-ui-react";
 
 const CrimeHeader = () => {
   return (
